@@ -1,15 +1,17 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>pl.delta-dev.kasia</groupId>
 	<artifactId>kasia-parent</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>[PARENT] Katarzyna Zielińska - Taxi Driver (Number One)</name>
 	<description>Strona Katarzyny Zielińskiej - kierowcy taksówki Number One.</description>
+	<url>https://github.com/lukaszprz/kasia</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<github.global.server>github</github.global.server>
 	</properties>
 
 	<developers>
@@ -68,7 +70,7 @@
 	<scm>
 		<url>https://github.com/lukaszprz/kasia</url>
 		<connection>scm:git:git://github.com/lukaszprz/kasia.git</connection>
-		<developerConnection>scm:git:git@github.com/lukaszprz/kasia.git</developerConnection>
+		<developerConnection>scm:git:git@github.com:lukaszprz/kasia.git</developerConnection>
 	</scm>
 
 	<build>
@@ -106,11 +108,18 @@
 					</reportPlugins>
 				</configuration>
 			</plugin>
-			<plugin>
+			<!-- <plugin>
 				<groupId>com.jakewharton</groupId>
 				<artifactId>github-deploy-maven-plugin</artifactId>
 				<version>1.0.0</version>
-			</plugin>
+				<executions>
+					<execution>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin> -->
 			<plugin>
 				<groupId>com.github.github</groupId>
 				<artifactId>downloads-maven-plugin</artifactId>
@@ -151,14 +160,16 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>1.6</source>
+					<target>1.6</target>
 				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.5</version>
 				<configuration>
 					<archive>
 						<manifest>
@@ -170,7 +181,7 @@
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
+				<artifactId>maven-javadoc-plugin</artifactId>				
 				<executions>
 					<execution>
 						<goals>
@@ -182,6 +193,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
+				<version>2.4</version>
 				<executions>
 					<execution>
 						<goals>
@@ -192,4 +204,7 @@
 			</plugin>
 		</plugins>
 	</build>
+  <modules>
+    <module>kasia-web</module>
+  </modules>
 </project>
