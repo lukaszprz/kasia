@@ -1,0 +1,195 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>pl.delta-dev.kasia</groupId>
+	<artifactId>kasia-parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>[PARENT] Katarzyna Zielińska - Taxi Driver (Number One)</name>
+	<description>Strona Katarzyny Zielińskiej - kierowcy taksówki Number One.</description>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<developers>
+		<developer>
+			<id>lukaszprz</id>
+			<name>Łukasz Przesmycki</name>
+			<email>lukasz.przesmycki@gmail.com</email>
+			<organization>Delta-DEV</organization>
+			<organizationUrl>https://github.com/lukaszprz</organizationUrl>
+			<url>https://github.com/lukaszprz/kasia</url>
+			<roles>
+				<role>Project Manager</role>
+				<role>Architect</role>
+				<role>Developer</role>
+				<role>Web Developer</role>
+				<role>Tester</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<ciManagement>
+		<system>Jenkins</system>
+		<url>http://jenkins.delta-dev.pl:8080/</url>
+		<notifiers>
+			<notifier>
+				<address>lukasz.przesmycki@gmail.com</address>
+				<sendOnError>true</sendOnError>
+				<sendOnFailure>true</sendOnFailure>
+				<sendOnSuccess>false</sendOnSuccess>
+				<sendOnWarning>false</sendOnWarning>
+				<type>mail</type>
+			</notifier>
+		</notifiers>
+	</ciManagement>
+
+	<distributionManagement>
+		<downloadUrl>https://github.com/lukaszprz/kasia.git</downloadUrl>
+		<repository>
+			<id>github-kasia</id>
+			<name>Kasia GitHub Repository</name>
+			<uniqueVersion>true</uniqueVersion>
+			<url>scm:git:git://github.com/lukaszprz/kasia.git</url>
+		</repository>
+		<site>
+			<id>kasia-web</id>
+			<name>Strona Kasi</name>
+			<url>http://kasia.delta-dev.pl/</url>
+		</site>
+	</distributionManagement>
+
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/lukaszprz/kasia/issues</url>
+	</issueManagement>
+
+	<scm>
+		<url>https://github.com/lukaszprz/kasia</url>
+		<connection>scm:git:git://github.com/lukaszprz/kasia.git</connection>
+		<developerConnection>scm:git:git@github.com/lukaszprz/kasia.git</developerConnection>
+	</scm>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<reportPlugins>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-project-info-reports-plugin</artifactId>
+							<version>2.2</version>
+							<configuration>
+								<dependencyDetailsEnabled>true</dependencyDetailsEnabled>
+								<dependencyLocationsEnabled>true</dependencyLocationsEnabled>
+							</configuration>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-javadoc-plugin</artifactId>
+							<version>2.7</version>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-surefire-report-plugin</artifactId>
+							<version>2.6</version>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-checkstyle-plugin</artifactId>
+							<version>2.6</version>
+						</plugin>
+					</reportPlugins>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.jakewharton</groupId>
+				<artifactId>github-deploy-maven-plugin</artifactId>
+				<version>1.0.0</version>
+			</plugin>
+			<plugin>
+				<groupId>com.github.github</groupId>
+				<artifactId>downloads-maven-plugin</artifactId>
+				<version>0.6</version>
+				<configuration>
+					<description>Official ${project.name} build of the
+						${project.version} release</description>
+					<override>true</override>
+					<includeAttached>true</includeAttached>
+					<server>github</server>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>install</phase>
+						<goals>
+							<goal>upload</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.github.github</groupId>
+				<artifactId>site-maven-plugin</artifactId>
+				<version>0.7</version>
+				<configuration>
+					<message>Building site for ${project.version}</message>
+					<server>github</server>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>site</goal>
+						</goals>
+						<phase>site</phase>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
