@@ -204,6 +204,10 @@
 			</plugin>
 		</plugins>
 	</build>
+<<<<<<< HEAD
+  
+=======
+>>>>>>> branch 'master' of https://github.com/lukaszprz/kasia.git
   <modules>
     <module>kasia-web</module>
   </modules>
