@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>pl.delta-dev.kasia</groupId>
 	<artifactId>kasia-parent</artifactId>
@@ -52,14 +53,9 @@
 		<repository>
 			<id>github</id>
 			<name>Kasia GitHub Repository</name>
-			<uniqueVersion>true</uniqueVersion>
-			<url>scm:git:git://github.com/Delta-DEV/kasia.git</url>
+			<!-- <url>scm:git:https://github.com/Delta-DEV/kasia.git</url> -->
+			<url>file:${project.build.directory}/repository/</url>
 		</repository>
-		<site>
-			<id>kasia-web</id>
-			<name>Strona Kasi</name>
-			<url>https://delta-dev.000webhostapp.com/</url>
-		</site>
 	</distributionManagement>
 
 	<issueManagement>
@@ -67,17 +63,60 @@
 		<url>https://github.com/Delta-DEV/kasia/issues</url>
 	</issueManagement>
 
-	<scm>	   
-		<url>https://github.com/Delta-DEV/kasia</url>
-		<connection>scm:git:git://github.com/Delta-DEV/kasia.git</connection>
-		<developerConnection>scm:git:git@github.com:Delta-DEV/kasia.git</developerConnection>
+	<scm>
+		<!-- <url>https://github.com/Delta-DEV/kasia</url> -->
+		<connection>scm:git:https://github.com/Delta-DEV/kasia.git</connection>
+		<!-- <developerConnection>scm:git:git@github.com:Delta-DEV/kasia.git</developerConnection> -->
 	</scm>
 
-	
-
- 
-	
 	<modules>
 		<module>kasia-web</module>
 	</modules>
+
+	<build>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-file</artifactId>
+				<version>2.4</version>
+			</extension>
+		</extensions>
+		<plugins>
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.5</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.15</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.4</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>2.8.2</version>
+				<configuration>
+					<deployAtEnd>true</deployAtEnd>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>versions-maven-plugin</artifactId>
+				<version>2.1</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-scm-plugin</artifactId>
+				<version>1.8.1</version>
+				<configuration>
+					<tag>${project.artifactId}-${project.version}</tag>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
