@@ -50,7 +50,7 @@
 	<distributionManagement>
 		<downloadUrl>https://github.com/Delta-DEV/kasia.git</downloadUrl>
 		<repository>
-			<id>github-kasia</id>
+			<id>github</id>
 			<name>Kasia GitHub Repository</name>
 			<uniqueVersion>true</uniqueVersion>
 			<url>scm:git:git://github.com/Delta-DEV/kasia.git</url>
@@ -67,7 +67,7 @@
 		<url>https://github.com/Delta-DEV/kasia/issues</url>
 	</issueManagement>
 
-	<scm>
+	<scm>	   
 		<url>https://github.com/Delta-DEV/kasia</url>
 		<connection>scm:git:git://github.com/Delta-DEV/kasia.git</connection>
 		<developerConnection>scm:git:git@github.com:Delta-DEV/kasia.git</developerConnection>
