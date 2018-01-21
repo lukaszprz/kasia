@@ -64,9 +64,10 @@
 	</issueManagement>
 
 	<scm>
-		<!-- <url>https://github.com/Delta-DEV/kasia</url> -->
+		<url>https://github.com/Delta-DEV/kasia</url>
 		<connection>scm:git:https://github.com/Delta-DEV/kasia.git</connection>
-		<!-- <developerConnection>scm:git:git@github.com:Delta-DEV/kasia.git</developerConnection> -->
+		<developerConnection>scm:git:https://github.com/Delta-DEV/kasia.git</developerConnection>
+		<tag>HEAD</tag>
 	</scm>
 
 	<modules>
